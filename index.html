@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark/Light Mode</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-…(check actual integrity)…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container
+">
+        <div class="text">
+            <h1 class="mode">Light Mode</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam expedita molestiae eveniet nihil quis doloremque facere magnam totam quidem itaque, accusamus quos quia placeat facilis voluptatem rem tempora provident voluptatum!
+            </p>
+            <button>
+                Click Here
+            </button>
+        </div>
+        <div class="mode-button">
+            <button class="btn">
+                <i class="fa-solid fa-moon"></i>
+                <p>Dark Mode</p>
+            </button>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+    <script>
+        const mainMode = document.querySelector('.main-container')
+const modeHeading = document.querySelector('h1');
+const modeButton = document.querySelector('.btn');
+const icon = document.querySelector('.btn i')
+const modeText = document.querySelector('.btn p')
+
+
+modeButton.addEventListener('click',() => {
+    // mainMode.style.backgroundColor = 'red'
+    mainMode.classList.toggle('dark')
+
+    if(mainMode.classList.contains('dark')){
+        modeHeading.innerHTML = 'Dark Mode';
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        modeText.innerHTML='Light Mode'
+        localStorage.setItem('mode', 'dark')
+    }else{
+        modeHeading.innerHTML = 'Light Mode';
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        modeText.innerHTML='Dark Mode';
+        localStorage.setItem('mode', 'light')
+    }
+})
+
+
+const mode = localStorage.getItem('mode')
+console.log(mode);
+
+
+if(mode === 'dark'){
+    console.log(true);
+    mainMode.classList.add('dark')
+    modeHeading.innerHTML = 'Dark Mode';
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+    modeText.innerHTML='Light Mode'
+    
+}else{
+        modeHeading.innerHTML = 'Light Mode';
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        modeText.innerHTML='Dark Mode';
+}
+
+
+</script>
+</body>
+</html>
